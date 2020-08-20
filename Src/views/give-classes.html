@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proffe | Sua plataforma de cursos Oline.</title>
+    <!--Depois ajustar o Main por conta da pag do Aluno-->
+    <link rel="stylesheet" href="/Public/Styles/main.css">
+
+    <link rel="stylesheet" href="/Public/Styles/Partials/header.css">
+    <link rel="stylesheet" href="/Public/Styles/Partials/forms.css">
+
+    <link rel="stylesheet" href="/Public/Styles/Partials/page-give-classes.css">
+
+    <script src="/Scripts/addField.js" defer></script>
+
+
+</head>
+
+<body id="page-give-classes">
+    <div id="container">
+        <header class="page-header">
+            <div class="top-bar-container">
+                <a href="/landing"><img src="/Public/images/icons/back.svg" alt="Voltar"></a>
+                <img src="/Public/images/logo.svg" alt="Proffy" >
+
+            </div>
+            <div class="header-content">
+                <strong>Que incrível que você quer dar aulas</strong>
+                <p>O primeiro passo, é preencher esse formulário de inscrição.</p>
+
+            </div>
+    
+        </header>
+        <main>
+            <!-- action="x" and method="post" is view block the url -->
+            <form action="/save-classes" id="create-classes" method="POST"> 
+                <fieldset>
+                    <legend>Seus dados</legend>
+                    <div class="input-block">
+                        <label for="name">Nome completo</label>
+                        <input name="name" id="name" required>
+                    </div>
+                    <div class="input-block">
+                        <label for="avatar">Link da sua foto <small>(comece com https://)</small></label>
+                        <input name="avatar" id="name" type="url" required>
+                    </div>
+                    <div class="input-block">
+                        <label for="whatssap">whatssap<small(somente números)></small></label>
+                        <input name="whatssap" id="whatssap" type="number" required>
+                    </div>
+                    <div class="textarea-block">
+                        <label for="bio">Biografia</label>
+                        <textarea name="bio" id="bio" required></textarea>
+                    </div>
+
+                </fieldset>
+                <fieldset>
+                    <legend>Sobre a aula</legend>
+                    <div class="select-block">
+                        <label for="subject"> Matéria</label>
+                        <select name="subject" id="subject" required>
+                            <option value="">Selecione uma opção</option>
+                            {%for weekday in weekdays%}
+                                <option value="{{loop.index0}}">
+                                    {{weekday}}
+                                </option>
+                            {%endfor%}
+                        </select>
+                    </div>
+                    <div class="input-block">
+                        <label for="cost"> Custo da sua hora/aula
+                            <small>(R$)</small>
+                        </label>
+                        <input name="cost" id="cost" type="number" required>
+                    </div>
+                </fieldset>
+                <fieldset id="schedule-items">
+
+                    <legend>Horários disponíveis
+                        <button type="button" id="add-time">+ Novo horário</button>
+                    </legend>
+
+                    <div class="schedule-item">
+                        <div class="select-block">
+                            <labe for="weekday">Dia da semana</labe>
+                            <select name="name weekday[]" required>
+                                {%for weekday in weekdays%}
+                                    <option value="{{loop.index0}}">
+                                        {{weekday}}
+                                    </option>
+                                {%endfor%}
+                        </select>
+                        </div>
+
+                        <div class="input-block">
+                            <label for="time_from">Das</label>
+                            <input type="time" id="time_from" name="time_from[]" required>
+                            
+                        </div>
+                        
+                        <div class="input-block">
+                            <label for="time_from">Até</label>
+                            <input type="time" id="time_to" name="time_from[]" required>
+                        </div>
+                    </div>
+                    <div class="schedule-item">
+                        <div class="select-block">
+                            <labe for="weekday">Dia da semana</labe>
+                            <select name="name weekday[]" required>
+                                <option value="">Selecione uma opção</option>
+                                <option value="1">Domingo</option>
+                                <option value="2">Segunda-Feira</option>
+                                <option value="3">Terça-Feira</option>
+                                <option value="4">Quarta-Feira</option>
+                                <option value="5">Quinta-Feira</option>
+                                <option value="6">Sexta-Feira</option>
+                                <option value="7">Sábado</option>
+                            </select>
+                        </div>
+
+                        <div class="input-block">
+                            <label for="time_from">Das</label>
+                            <input type="time" id="time_from" name="time_from[]" required>
+                            
+                        </div>
+                        
+                        <div class="input-block">
+                            <label for="time_from">Até</label>
+                            <input type="time" id="time_to" name="time_from[]" required>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+            <footer>
+                <p>
+                    <img src="/images/icons/warning.svg" alt="Aviso importante">
+                    importante! <br> Preencha todos os dados
+                </p>
+                <button type="submit" form="create-classes">Salvar cadastro</button>
+            
+            </footer>
+        </main>
+    </div>
+</body>
+</html>
