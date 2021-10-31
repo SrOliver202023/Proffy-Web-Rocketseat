@@ -1,5 +1,5 @@
 {
-  "name": "nextlevelweek",
+  "name": "nextlevelweek2",
   "scripts": {
     "dev": "nodemon src/server.js"
   },
@@ -9,6 +9,6 @@
     "sqlite-async": "^1.1.0"
   },
   "devDependencies": {
-    "nodemon": "^2.0.4"
+    "nodemon": "^2.0.14"
   }
 }
